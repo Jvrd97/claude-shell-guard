@@ -30,7 +30,7 @@ Claude Code runs a destructive command now and then, and `/rewind` does not undo
 - Reddit: [a 202 GB archive wiped despite "don't delete data"](https://www.reddit.com/r/ClaudeCode/comments/1sbpfdl/).
 - Hacker News: [an agent dropped a production database](https://news.ycombinator.com/item?id=47278720).
 
-Guards already exist, for example dcg and cc-safety-net. shell-guard differs in two ways:
+Guards already exist, for example [dcg](https://github.com/Dicklesworthstone/destructive_command_guard) and [cc-safety-net](https://github.com/kenryu42/cc-safety-net). shell-guard differs in two ways:
 
 - **It knows where the project is.** `rm -rf dist` inside the project runs; `rm -rf ~/anything`, `rm -rf ..`, `rm -rf *` at the project root and `cd ~ && rm -rf *` are refused. Paths are resolved against the working directory, `cd` included.
 - **It snapshots before it lets work go.** `git reset --hard`, `git checkout -- .`, `git clean -fd`, `git stash drop` and `rm -r` inside the project still run, but first the whole working tree, untracked files included, is committed to `refs/shell-guard/<time>`. `/shell-guard` prints the commands that bring it back.
