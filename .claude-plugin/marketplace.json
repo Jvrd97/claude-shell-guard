@@ -1,0 +1,15 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "shell-guard",
+  "description": "shell-guard: blocks destructive shell commands and snapshots uncommitted work before Claude Code destroys it",
+  "owner": { "name": "Daniil Bystrov", "url": "https://github.com/Jvrd97" },
+  "plugins": [
+    {
+      "name": "shell-guard",
+      "description": "Blocks shell commands that wipe your home folder, the project, disks, protected branches or databases, and snapshots uncommitted work to a git ref first.",
+      "source": "./",
+      "category": "security",
+      "homepage": "https://github.com/Jvrd97/claude-shell-guard"
+    }
+  ]
+}

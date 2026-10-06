@@ -1,0 +1,38 @@
+{
+  "name": "shell-guard",
+  "version": "0.1.0",
+  "description": "Blocks shell commands that wipe your home folder, the project, disks, protected branches or databases, and snapshots uncommitted work to a git ref before commands that would destroy it.",
+  "author": { "name": "Daniil Bystrov", "url": "https://github.com/Jvrd97" },
+  "homepage": "https://github.com/Jvrd97/claude-shell-guard",
+  "repository": "https://github.com/Jvrd97/claude-shell-guard",
+  "license": "MIT",
+  "keywords": ["mod", "safety", "bash", "guard", "git", "snapshot", "rm-rf"],
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "mode": {
+      "type": "string",
+      "title": "When a command is dangerous",
+      "description": "deny refuses it and tells the model why; ask sends it to the permission dialog with the reason instead.",
+      "default": "deny",
+      "options": ["deny", "ask"]
+    },
+    "protectedBranches": {
+      "type": "string",
+      "title": "Protected branches",
+      "description": "Comma-separated branches that may not be force-pushed or force-deleted.",
+      "default": "main,master"
+    },
+    "snapshots": {
+      "type": "boolean",
+      "title": "Snapshot before destructive git and rm",
+      "description": "Save uncommitted work, untracked files included, to refs/shell-guard/<time> before git reset --hard, git clean -f, rm -r inside the project and the like.",
+      "default": true
+    },
+    "extraDeny": {
+      "type": "string",
+      "title": "Extra deny patterns",
+      "description": "Regular expressions, one per line, matched against each command of a Bash call (prefixes like sudo stripped). A match is refused.",
+      "default": ""
+    }
+  }
+}
